@@ -8,9 +8,10 @@ const writeToFile = util.promisify(fs.writeFile);
 
 //api route
 router.get('/notes', (req, res) => {
-    readFromFile('../db/db.json').then((notes) => {
-        console.log(notes);
-        return res.json(notes);
+    readFromFile('db/db.json').then((notes) => {
+        let parsedNotes = JSON.parse(notes);
+        console.log(parsedNotes);
+        return res.json(parsedNotes);
     });
 });
 
